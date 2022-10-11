@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // a. print all odd numbers in an array -- anonymous function
+        var odd_numbers=function(arr){
+            var oddArr=[]
+            for( var ele of arr)
+            {
+                if(ele % 2==0)
+                    continue
+                else
+                    oddArr.push(ele)
+            }
+            return oddArr
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10]
+        console.log(odd_numbers(ar))
+
+        // a. print all odd numbers in an array -- IIFE function
+        var ar=[1,2,3,4,5,6,7,8,9,10];
+
+        (
+            function(arr){
+            var oddArr=[]
+            for( var ele of arr)
+            {
+                if(ele % 2==0)
+                    continue
+                else
+                    oddArr.push(ele)
+            }
+            console.log(oddArr)
+        }
+        )(ar)
+
+        // b. To convert the strings in the array to title case -- anonymous function
+        strArr=["Sravani","hello","world","india","sravani talari"]
+        var titleCaseStrArr=function(strAr){
+            titleCaseStrAr=[]
+            for(var str of strAr)
+            {   
+                s=str.split(' ')
+                for (var i=0;i<s.length;i++)
+                {
+                    s[i] = s[i].charAt(0).toUpperCase() + s[i].slice(1).toLowerCase();
+
+                }
+                titleCaseStrAr.push(s.join(' ').trim())
+            }
+            return titleCaseStrAr
+        }
+        console.log(titleCaseStrArr(strArr))
+
+        // b. To convert the strings in the array to title case -- IIFE function
+        strArr=["Sravani","hello","world","india","sravani talari"];
+        (
+            function(strAr){
+                titleCaseStrAr=[]
+                for(var str of strAr)
+                {   
+                    s=str.split(' ')
+                    for (var i=0;i<s.length;i++)
+                    {
+                        s[i] = s[i].charAt(0).toUpperCase() + s[i].slice(1).toLowerCase();
+
+                    }
+                    titleCaseStrAr.push(s.join(' ').trim())
+                }
+                console.log(titleCaseStrAr)
+            }
+        )(strArr)
+
+        //c.Sum of all numbers in an array -- anonymous function
+        var sumArr=function(arr){
+            var sum=0
+            for( var ele of arr)
+            {
+                sum=sum+ele
+            }
+            return sum
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10]
+        console.log(sumArr(ar))
+
+        //c.Sum of all numbers in an array -- IIFE function
+        var ar=[1,2,3,4,5,6,7,8,9,10];
+       (
+        function(arr){
+            var sum=0
+            for( var ele of arr)
+            {
+                sum=sum+ele
+            }
+            console.log(sum)
+        }
+        )(ar)
+
+        //d. Prime Numbers in an array -- anonymous function
+        var primeNumbers=function(arr){
+            var primeArr=[]
+            for( var ele of arr)
+            {
+                var prime=true
+                if(ele==1)
+                    continue
+                if(ele == 2)
+                {
+                    primeArr.push(ele)
+                    continue
+                }
+                for(var i=2;i<ele-1;i++)
+                {
+                    if(ele % i==0)
+                    {
+                        prime=false
+                        break
+                    }
+                }
+                if(prime==true)
+                    primeArr.push(ele)
+            }
+            return primeArr
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10,11,12,13]
+        console.log(primeNumbers(ar))
+
+        //d. Prime Numbers in an array -- IIFE function
+        var ar=[1,2,3,4,5,6,7,8,9,10,11,12,13];
+        (
+            function(arr){
+                var primeArr=[]
+                for( var ele of arr)
+                {
+                    var prime=true
+                    if(ele==1)
+                        continue
+                    if(ele == 2)
+                    {
+                        primeArr.push(ele)
+                        continue
+                    }
+                    for(var i=2;i<ele-1;i++)
+                    {
+                        if(ele % i==0)
+                        {
+                            prime=false
+                            break
+                        }
+                    }
+                    if(prime==true)
+                        primeArr.push(ele)
+                }
+                console.log(primeArr)
+            }
+        )(ar)
+
+        //e.Return All the palindromes in an array -- anonymous function
+        strArr=["Sravani","madam","world","civic","radar"]
+        var palindromeArr=function(strAr){
+            palindromeStrAr=[]
+            for(var str of strAr)
+            {   
+                rev=str.split("").reverse().join("")
+                if(str===rev)
+                    palindromeStrAr.push(str)
+            }
+            return palindromeStrAr
+        }
+        console.log(palindromeArr(strArr))
+
+        //e.Return All the palindromes in an array -- IIFE function
+        strArr=["Sravani","madam","world","civic","radar"];
+        (function(strAr){
+            palindromeStrAr=[]
+            for(var str of strAr)
+            {   
+                rev=str.split("").reverse().join("")
+                if(str===rev)
+                    palindromeStrAr.push(str)
+            }
+            console.log(palindromeStrAr)
+        })(strArr)
+
+        //f.Return median of two sorted arrays of the same size -- anonymous function
+        var arr1=[1,5,6]
+        var arr2=[2,40,50]
+        function compare(a, b)
+        {
+            return a - b
+        }
+        var medianofTwoSortedArrays=function(arr1,arr2){
+            var arr=arr1.concat(arr2).sort(compare)
+            // var arr=arr1.concat(arr2).sort(function(a, b){return a - b})
+            var median
+            if(arr.length % 2 == 0)
+            {
+                var n=arr.length/2
+                median=(arr[n-1]+arr[n])/2
+            }
+            else
+            {
+                var n=math.floor(arr.length/2)
+                median=arr[n]
+            }
+            return median
+        }
+        console.log(medianofTwoSortedArrays(arr1,arr2))
+
+        //f.Return median of two sorted arrays of the same size -- IIFE function
+        var arr1=[1,5,6];
+        var arr2=[2,40,50];
+        function compare(a, b)
+        {
+            return a - b
+        }
+        (
+        function(arr1,arr2){
+            var arr=arr1.concat(arr2).sort(compare)
+            var median
+            if(arr.length % 2 == 0)
+            {
+                var n=arr.length/2
+                median=(arr[n-1]+arr[n])/2
+            }
+            else
+            {
+                var n=math.floor(arr.length/2)
+                median=arr[n]
+            }
+            console.log(median)
+        }
+        )(arr1,arr2)
+
+        //g.remove duplicates from the array -- Anonymous Function
+        var arr=[2,3,44,6,2,4,6]
+        var chars = ['A', 'B', 'A', 'C', 'B'];
+        var removeDuplicates=function(arr)
+        {
+            uniqueArr=[]
+            arr.forEach(element => {
+                if(!uniqueArr.includes(element)){
+                    uniqueArr.push(element)
+                }
+            });
+            return uniqueArr
+        }
+        console.log(removeDuplicates(arr))
+        console.log(removeDuplicates(chars))
+
+        //g.remove duplicates from the array -- IIFE Function
+        var arr=[2,3,44,6,2,4,6];
+        var chars = ['A', 'B', 'A', 'C', 'B'];
+        (function(arr)
+        {
+            uniqueArr=[]
+            arr.forEach(element => {
+                if(!uniqueArr.includes(element)){
+                    uniqueArr.push(element)
+                }
+            });
+            console.log(uniqueArr)
+        })(arr)
+
+        //h.Return an array by K times --anonymous function
+        var ar=[1,2,3,4,5,6,7,8]
+        var rotateArray= function(arr,k){
+            arr=arr.slice(k).concat(arr.slice(0,k))
+            return arr
+        }
+        console.log(rotateArray(ar,3))
+
+        //h.Return an array by K times --IIFE function
+        var ar=[1,2,3,4,5,6,7,8];
+        ( function(arr,k){
+            arr=arr.slice(k).concat(arr.slice(0,k))
+            console.log(arr)
+        })(ar,3)
+
+        
+    </script>
+</body>
+</html>

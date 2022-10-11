@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // a. print all odd numbers in an array -- Arrow function
+        var odd_numbers=(arr)=>{
+            var oddArr=[]
+            for( var ele of arr)
+            {
+                if(ele % 2==0)
+                    continue
+                else
+                    oddArr.push(ele)
+            }
+            return oddArr
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10]
+        console.log(odd_numbers(ar))
+       
+        // b. To convert the strings in the array to title case -- Arrow function
+        strArr=["Sravani","hello","world","india","sravani talari"]
+        var titleCaseStrArr=(strAr)=>{
+            titleCaseStrAr=[]
+            for(var str of strAr)
+            {   
+                s=str.split(' ')
+                for (var i=0;i<s.length;i++)
+                {
+                    s[i] = s[i].charAt(0).toUpperCase() + s[i].slice(1).toLowerCase();
+
+                }
+                // str = str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+                titleCaseStrAr.push(s.join(' ').trim())
+            }
+            return titleCaseStrAr
+        }
+        console.log(titleCaseStrArr(strArr))
+
+        //c.Sum of all numbers in an array -- Arrow function
+        var sumArr=(arr)=>{
+            var sum=0
+            for( var ele of arr)
+            {
+                sum=sum+ele
+            }
+            return sum
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10]
+        console.log(sumArr(ar))
+
+        //d. Prime Numbers in an array -- Arrow function
+        var primeNumbers=(arr)=>{
+            var primeArr=[]
+            for( var ele of arr)
+            {
+                var prime=true
+                if(ele==1)
+                    continue
+                if(ele == 2)
+                {
+                    primeArr.push(ele)
+                    continue
+                }
+                for(var i=2;i<ele-1;i++)
+                {
+                    if(ele % i==0)
+                    {
+                        prime=false
+                        break
+                    }
+                }
+                if(prime==true)
+                    primeArr.push(ele)
+            }
+            return primeArr
+        }
+        var ar=[1,2,3,4,5,6,7,8,9,10,11,12,13]
+        console.log(primeNumbers(ar))
+
+        //e.Return All the palindromes in an array -- Arrow function
+        strArr=["Sravani","madam","world","civic","radar"]
+        var palindromeArr=(strAr)=>{
+            palindromeStrAr=[]
+            for(var str of strAr)
+            {   
+                rev=str.split("").reverse().join("")
+                if(str===rev)
+                    palindromeStrAr.push(str)
+            }
+            return palindromeStrAr
+        }
+        console.log(palindromeArr(strArr))
+        
+    </script>
+</body>
+</html>
